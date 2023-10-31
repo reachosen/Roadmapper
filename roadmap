@@ -1,0 +1,39 @@
+import matplotlib.pyplot as plt
+
+# Define the tasks, timeframes, and colors
+tasks = [
+    "Identify a Leader",
+    "Collaborate with Stakeholders",
+    "Code Repository Strategy",
+    "Staff Team",
+    "Train Team on Tech and Tools",
+    "Identify Ancillary Priorities",
+    "Identify Philosophy and Priorities",
+    "Unify Intake Process ",
+    "Unify Intake Process Ancillary",
+    "Optmize Agile Workflows",
+    "Environment and Access Strategy",
+    "Focus on Industry Advancements"
+]
+
+timeframes = [(0, 30), (30, 60), (30, 60), (60, 90), (60, 365), (60, 90),
+              (30, 90), (30, 90), (60, 180), (30, 365), (60, 365), (60, 365)]
+
+colors = [
+    "blue", "green", "orange", "purple", "red", "brown", "pink", "yellow",
+    "cyan", "magenta", "grey", "lime"
+]
+
+# Create the roadmap diagram
+fig, ax = plt.subplots(figsize=(12, 8))
+for i, (task, (start, end), color) in enumerate(zip(tasks, timeframes, colors)):
+    ax.broken_barh([(start, end - start)], (i - 0.4, 0.8), facecolors=color)
+    plt.text((start + end) / 2, i, task, ha='center', va='center', fontsize=10)
+
+# Labeling and formatting
+ax.set_xlabel("Days")
+ax.set_yticks([])
+ax.set_xlim(0, 365)
+plt.title("Strategy Analytics Team Roadmap")
+
+plt.show()
